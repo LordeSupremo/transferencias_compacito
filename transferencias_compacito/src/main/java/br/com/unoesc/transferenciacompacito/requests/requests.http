@@ -1,0 +1,24 @@
+GET http://localhost:8090/usuarios/1
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBcGkgZGUgVXN1w6FyaW9zIiwic3ViIjoiMSIsImlhdCI6MTU4NDY0MTU5NCwiZXhwIjoxNTg0NzI3OTk0fQ.ITFL1-FjfIPPMVeHT3tgvIdyUTOSz9a44r_T3tJ9nXI
+
+###
+POST http://localhost:8080/transferencias
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBcGkgZGUgVXN1w6FyaW9zIiwic3ViIjoiNyIsImlhdCI6MTU4NDczMDgwMCwiZXhwIjoxNTg0ODE3MjAwfQ.01x4jQDvtQyBu_an31I2uzBJatuk2xRrGfxj8PsP2p4
+Content-Type: application/json;
+
+{
+  "idRemetente": "8",
+  "valor": "2",
+  "idDestinatario": "2"
+}
+
+###
+GET http://localhost:8080/transferencias/extrato/8
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBcGkgZGUgVXN1w6FyaW9zIiwic3ViIjoiNyIsImlhdCI6MTU4NDczMDgwMCwiZXhwIjoxNTg0ODE3MjAwfQ.01x4jQDvtQyBu_an31I2uzBJatuk2xRrGfxj8PsP2p4
+
+###
+GET http://localhost:8080/transferencias/teste
+
+###
+
