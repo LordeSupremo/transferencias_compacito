@@ -43,7 +43,8 @@ public class TransferenciaController {
     @PostMapping
     @Transactional(transactionManager="transferenciasTransactionManager", rollbackFor = Exception.class)
     public ResponseEntity<String> transeferirCoins(@RequestHeader("Authorization") String token,
-        @Valid @RequestBody TransferenciaFORM body) throws EmailException
+        @Valid @RequestBody TransferenciaFORM body
+    ) throws EmailException
     {
         // valida token e ja retorna o usuario remetente
         int valor = body.getValor();
@@ -68,7 +69,9 @@ public class TransferenciaController {
 
     @GetMapping("/extrato/{id}")
     @Transactional(transactionManager="transferenciasTransactionManager", rollbackFor = Exception.class)
-    public ResponseEntity extratoTransferencias(@RequestHeader("Authorization") String token, HttpServletRequest request, @PathVariable Long id) {
+    public ResponseEntity<ArrayList<ExtratoTransferenciaDto>> extratoTransferencias(
+        @RequestHeader("Authorization") String token, HttpServletRequest request, @PathVariable Long id
+    ) {
         String responseBody = restService.getRequest(id, token);
         Usuario usuarioSolicitante = restService.getUsuarioByJson(responseBody);
 

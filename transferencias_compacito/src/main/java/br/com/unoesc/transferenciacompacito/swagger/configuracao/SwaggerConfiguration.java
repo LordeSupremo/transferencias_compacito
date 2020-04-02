@@ -2,16 +2,18 @@ package br.com.unoesc.transferenciacompacito.swagger.configuracao;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.ResponseEntity;
 import springfox.documentation.builders.*;
 import springfox.documentation.schema.ModelRef;
 import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.Arrays;
 
 @Configuration
+@EnableSwagger2
 public class SwaggerConfiguration {
 
     @Bean
@@ -21,7 +23,6 @@ public class SwaggerConfiguration {
             .apis(RequestHandlerSelectors.basePackage("br.com.unoesc.transferenciacompacito"))
             .build()
             .apiInfo(getApiInfo())
-            .ignoredParameterTypes(ResponseEntity.class)
             .globalOperationParameters(Arrays.asList(new ParameterBuilder()
                 .name("Authorization")
                 .description("Header for token JWT")
@@ -32,6 +33,14 @@ public class SwaggerConfiguration {
     }
 
     private ApiInfo getApiInfo() {
-        return new ApiInfoBuilder().title("Transferencia Compacito API").build();
+        return new ApiInfoBuilder()
+            .title("Transferencia Compacito API")
+            .version("1.0.1")
+            .contact(new Contact(
+                "Jhonatan Oliveira & Nicolas Maia",
+                null,
+                "jhonatan.oliveira_BO@compasso.com.br, nicolas.maia_BOLS@compasso.com.br"
+            ))
+            .build();
     }
 }
